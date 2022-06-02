@@ -12,5 +12,9 @@ function3.font()
     res.send('My first ever api!')
 });
 
+router.get('/hello',function (req, res){
+
+})
+
 module.exports = router;
 // adding this comment for no reason
