@@ -33,34 +33,6 @@ const moviearr=[["horror","The Shining"],["drama","Titanic"],["thriller","Shutte
 const pairOfarr=fromPairs(moviearr)
 console.log(pairOfarr)
 })
-let players=[
-    {
-        "name" : "manish",
-        "dob" : "1/1/1995",
-        "gender":"male",
-        "city":"jalander",
-        "sports":["swimming"]
-    },
-    {
-        "name" : "gopal",
-        "dob" : "11/11/1995",
-        "gender":"male",
-        "city":"himachal",
-        "sports":["running"]
-    },
-    {
-        "name" : "ram",
-        "dob" : "1/12/1992",
-        "gender":"male",
-        "city":"haryana",
-        "sports":["boxing"]
-    }
-]
-router.post('/players', function (req, res) {
-let newPlayer=players(req.body)
-console.log(newPlayer)
-    res.send({data:players,type:true})
-})
 
 module.exports = router;
 // adding this comment for no reason
