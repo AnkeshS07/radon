@@ -1,5 +1,21 @@
+const book = require("../models/bookModel")
+const authorModel=require("../models/authorModel")
+const createBooks= async function (req, res) {
+    let data= req.body
 
-const bookModel = require("../models/bookModel")
+    let savedData= await book.create(data)
+    res.send({msg: savedData})
+}
+const createAuthor= async function (req, res) {
+    let authordata= req.body
+
+    let savedAuthorData= await authorModel.create(authordata)
+    res.send({msg: savedAuthorData})
+}
+module.exports.createBooks=createBooks
+module.exports.createAuthor=createAuthor
+
+/*const bookModel = require("../models/bookModel")
 const BookModel= require("../models/bookModel")
 
 const createBook= async function (req, res) {
@@ -38,7 +54,7 @@ module.exports.getXINRBooks=getXINRBooks
 module.exports.getParticularBooks=getParticularBooks
 module.exports.createBook=createBook
 module.exports.bookList=bookList
-module.exports.getBooksInYear=getBooksInYear
+module.exports.getBooksInYear=getBooksInYear*/
     // let allBooks= await BookModel.find( ).count() // COUNT
 
     // let allBooks= await BookModel.find( { authorName : "Chetan Bhagat" , isPublished: true  } ) // AND
