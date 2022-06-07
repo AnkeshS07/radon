@@ -11,7 +11,7 @@ const bookSchema = new mongoose.Schema( {
         indianPrice: String,
         europePrice: String,
     }
-}, { timestamps: true });
+}, { timestamps: true })
 
 
 module.exports = mongoose.model('Book', bookSchema)
