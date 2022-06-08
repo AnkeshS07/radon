@@ -2,18 +2,45 @@ const book = require("../models/bookModel")
 const authorModel=require("../models/authorModel")
 const createBooks= async function (req, res) {
     let data= req.body
-
     let savedData= await book.create(data)
     res.send({msg: savedData})
 }
+
 const createAuthor= async function (req, res) {
     let authordata= req.body
-
     let savedAuthorData= await authorModel.create(authordata)
     res.send({msg: savedAuthorData})
 }
+const authoridandBooks=async function(req,res){
+    
+    let AuthorIdData=await authorModel.find({author_name:"Chetan Bhagat"}).select("author_id")
+    let booksByBhagat=await book.find({author_id:AuthorIdData[0].author_id})
+    
+    res.send({msg:booksByBhagat})
+}
+const bookAuthor=async function(req,res){
+    let data=await book.findOneAndUpdate({name:"Two States"},{$set:{prices:100}},{new:true})
+    let authorData=await authorModel.find({author_id:data.author_id}).select("author_name")
+    let price=data.prices
+    res.send({msg:authorData,price})
+}
+
+const bookCostBtW=async function(req,res){
+    let priceBtw=await book.find({prices:{$gte:50,$lte:100}}).select({author_id:1})
+    let empArr=[]
+    for (let i of priceBtw){
+        let d=await authorModel.find({author_id:i.author_id}).select({author_name:1,_id:0})
+        empArr.push(d)
+    }
+res.send({msg:empArr})
+}
+
+module.exports.bookCostBtW=bookCostBtW
 module.exports.createBooks=createBooks
 module.exports.createAuthor=createAuthor
+module.exports.bookAuthor=bookAuthor
+module.exports.authoridandBooks=authoridandBooks
+
 
 /*const bookModel = require("../models/bookModel")
 const BookModel= require("../models/bookModel")
