@@ -6,9 +6,14 @@ const mid1= function ( req, res, next) {
 }
 
 const mid2= function ( req, res, next) {
-    console.log("Hi I am a middleware named Mid2")
-    next()
-}
+    let data=req.headers
+    let data2=data.isfreeappuser
+    if(!data2){  res.send({msg: "isFreeAppUser is required"})}
+    else{
+      next()
+    }
+}   
+
 
 const mid3= function ( req, res, next) {
     console.log("Hi I am a middleware named Mid3")
