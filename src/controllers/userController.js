@@ -103,7 +103,6 @@ const del = async function (req, res) {
     //add the message to user's posts
     updatedPosts.push(message)
     let updatedUser = await userModel.findOneAndUpdate({_id: user._id},{posts: updatedPosts}, {new: true})
-
     //return the updated user document
     return res.send({status: true, data: updatedUser})
 }
