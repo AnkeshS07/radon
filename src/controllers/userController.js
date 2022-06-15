@@ -80,7 +80,7 @@ const updateUser = async function (req, res) {
 
   let userData = req.body;
   let updatedUser = await userModel.findOneAndUpdate({ _id: userId }, userData,{new:true,upsert:true});
-  res.send({ status: updatedUser, data: updatedUser });
+  res.send({ status:true, data: updatedUser });
 };
 const del = async function (req, res) {
     let userId=req.params.userId;
