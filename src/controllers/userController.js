@@ -95,6 +95,7 @@ const del = async function (req, res) {
       res.send({ msg: data })
   }
   
+  
 module.exports.createUser = createUser;
 module.exports.getUserData = getUserData;
 module.exports.updateUser = updateUser;
